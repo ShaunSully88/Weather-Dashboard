@@ -1,33 +1,35 @@
-var formInput = document.querySelector("#citysearch")
-var mainContainerEl= document.querySelector("#main-container")
-var citySearchTerm = document.querySelector("#city-weather")
+var cityInput = document.querySelector("#citysearch");
+var cityContainerEl= document.querySelector("#main-container");
+var citySearchTerm = document.querySelector("#city-weather");
+var cityFormEl = document.querySelector("#city-form");
+var apiKey = "42e1f1d2c64b89323a4af79fe114ff93";
 
 
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
-    var city = formInput.value.trim();
+    var city = cityInput.value.trim();
 
     if(city) {
         getWeather(city);
-        mainContainerEl.textContent = "";
+        cityContainerEl.textContent = "";
+        cityInput.value = "";
         
     } else {
-        alert("Please enter a City");
+        alert("Please enter a City.");
     }
     
 };
 
 
 var getWeather = function (user) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude=hourly,minutely,alerts&appid=42e1f1d2c64b89323a4af79fe114ff93";
-
+    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=45.14&lon=76.14&exclude=hourly,minutely,alerts&appid=42e1f1d2c64b89323a4af79fe114ff93";
 
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
         response.json().then(function(data) {
-            displayWeather(data, user);        
+            showWeather(data, user);        
         });
        } else {
         alert("Error! " + response.statusText);
@@ -36,43 +38,47 @@ var getWeather = function (user) {
     .catch(function(error) {
         alert("Unable to reach website");
     });
+    console.log(fetch)
 };
 
-var displayWeather = function(repos, searchTerm) {
-    if(repos.length === 0) {
-        mainContainerEl.textContent = "No cities found!";
+
+var showWeather = function(cities, searchTerm) {
+    if(cities.length === 0) {
+        cityContainerEl.textContent = "No cities found!";
         return;
     }
     
     citySearchTerm.textContent = searchTerm;
 
-    for (var i = 0; i < repos.length; i++) {
+    for (var i = 0; i < cities.length; i++) {
         //var cityName = repos[i].owner.login + "/" + repos[i].name;
 
         var cityEl = document.createElement("a");
         cityEl.classList = "list-item flex-row justify-space-between align-center";
-        cityEl.setAttribute = ("href", " " + );
+        cityEl.setAttribute = ("href", " " + "");
 
         var titleEl = document.createElement("span");
-        titleEl.textContent =    ;
+        titleEl.textContent =  ""  ;
 
         cityEl.appendChild(titleEl);
 
         var statusEl = document.createElement("span");
         statusEl.classList ="flex-row align-center";
 
-        if(repos[i].open_issues_count > 0) {
+        if(cities[i].open_issues_count > 0) {
             statusEl.innerHTML = 
-            "<i class='fas fa-times status-icon icon-danger'></i>" + repos[i].open_issues_count + "issue(s)";
+            "<i class='fas fa-times status-icon icon-danger'></i>" + cities[i].open_issues_count + "issue(s)";
         } else {
             statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
         }
 
         cityEl.appendChild(statusEl);
 
-        mainContainerEl.appendChild(cityEl);
+        cityContainerEl.appendChild(cityEl);
     }
 };
 
 getWeather();
 console.log(getWeather)
+cityFormEl.addEventListener("submit", formSubmitHandler);
+// "https://api.openweathermap.org/data/2.5/onecall?lat=${}&lon=${}&exclude=hourly,minutely,alerts&appid=42e1f1d2c64b89323a4af79fe114ff93&units=metric&current.temp=${}&current.humidity=${}&current.wind.speed=${}"
