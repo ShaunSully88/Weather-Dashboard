@@ -17,7 +17,7 @@
         <form id="user-form" class="card-body">
             <h3 class="card-header text-uppercase">Search for City:</h3>
             <input name="citysearch" id="citysearch" type="text" autofocus="true" class="form-input"/>
-            <button type="submit" class="btn">Search</button>
+            <button type="button" class="btn" id="search-btn">Search</button>
           </form>
 
         <!--Search history goes here-->
@@ -29,8 +29,8 @@
 
     <!-- Weather Container-->
     <main id="main-container">
-      <div id="city-weather" class=" row col-9">
-
+      <div id="city-weather" class="weather row col-9">
+        <p></p>
       </div>
       
     
@@ -39,89 +39,68 @@
         <div id="five-day" class="five-day col-9 row ">
            <h3>5 Day Forecast:</h3>
             <div class="card dayone col-2 row">
-                <ul id="list-toDo" class="list-group">
-                  <li class="">
-                     Date:
-                  </li>
-                  <li>
-                      Temp:
-                  </li>
-                  <li>
-                      Wind:
-                  </li>
-                  <li>
-                      Humidity:
-                  </li>
-                </ul>
+              <p class="card-text">Date:</p>
+                  
+              <p class="card-text">Temp:</p>  
+                  
+              <p class="card-text">Wind:</p> 
+                  
+              <p class="card-text">Humidity:</p>  
+                  
             </div>
             <div class="card daytwo col-2 row">
-                <ul id="list-toDo" class="list-group">
-                  <li class="">
-                     Date:
-                  </li>
-                  <li>
-                      Temp:
-                  </li>
-                  <li>
-                      Wind:
-                  </li>
-                  <li>
-                      Humidity:
-                  </li>
-                </ul>
+                <div class="card dayone col-2 row">
+                    <p class="card-text">Date:</p>
+                        
+                    <p class="card-text">Temp:</p>  
+                        
+                    <p class="card-text">Wind:</p> 
+                        
+                    <p class="card-text">Humidity:</p>  
+                        
+                  </div>
             </div>
             <div class="card daythree col-2 row">
-                <ul id="list-toDo" class="list-group">
-                  <li class="">
-                     Date:
-                  </li>
-                  <li>
-                      Temp:
-                  </li>
-                  <li>
-                      Wind:
-                  </li>
-                  <li>
-                      Humidity:
-                  </li>
-                </ul>
+                <div class="card dayone col-2 row">
+                    <p class="card-text">Date:</p>
+                        
+                    <p class="card-text">Temp:</p>  
+                        
+                    <p class="card-text">Wind:</p> 
+                        
+                    <p class="card-text">Humidity:</p>  
+                        
+                  </div>
             </div>
             <div class="card dayfour col-2 row">
-                <ul id="list-toDo" class="list-group">
-                  <li class="">
-                     Date:
-                  </li>
-                  <li>
-                      Temp:
-                  </li>
-                  <li>
-                      Wind:
-                  </li>
-                  <li>
-                      Humidity:
-                  </li>
-                </ul>
+                <div class="card dayone col-2 row">
+                    <p class="card-text">Date:</p>
+                        
+                    <p class="card-text">Temp:</p>  
+                        
+                    <p class="card-text">Wind:</p> 
+                        
+                    <p class="card-text">Humidity:</p>  
+                        
+                  </div>
             </div>
             <div class="card dayfive col-2 row">
-                <ul id="list-toDo" class="list-group">
-                  <li class="">
-                     Date:
-                  </li>
-                  <li>
-                      Temp:
-                  </li>
-                  <li>
-                      Wind:
-                  </li>
-                  <li>
-                      Humidity:
-                  </li>
-                </ul>
+                <div class="card dayone col-2 row">
+                    <p class="card-text">Date:</p>
+                        
+                    <p class="card-text">Temp:</p>  
+                        
+                    <p class="card-text">Wind:</p> 
+                        
+                    <p class="card-text">Humidity:</p>  
+                        
+                  </div>
             </div>
               
 
         </div>
     </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script href="./assets/script.js"></script>
 </body>
 </html>
