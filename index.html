@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/style.css"></link>
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <header class="weather-dashboard"> Weather Dashboard</header>
+
+    <!--Aside-->
+  <div id="aside-container" class="flex-column d-flex col-12">
+      <div  id="search-nav" class="row col-3">
+        <form id="user-form" class="card-body">
+            <h3 class="card-header text-uppercase">Search for City:</h3>
+            <input name="citysearch" id="citysearch" type="text" autofocus="true" class="form-input"/>
+            <button type="submit" class="btn">Search</button>
+          </form>
+
+        <!--Search history goes here-->
+        <div id="search-history">
+
+        </div>
+
+    </div>
+
+    <!-- Weather Container-->
+    <main id="main-container">
+      <div id="city-weather" class=" row col-9">
+
+      </div>
+      
+    
+
+        <!--5 Day Forecast Container-->
+        <div id="five-day" class="five-day col-9 row ">
+           <h3>5 Day Forecast:</h3>
+            <div class="card dayone col-2 row">
+                <ul id="list-toDo" class="list-group">
+                  <li class="">
+                     Date:
+                  </li>
+                  <li>
+                      Temp:
+                  </li>
+                  <li>
+                      Wind:
+                  </li>
+                  <li>
+                      Humidity:
+                  </li>
+                </ul>
+            </div>
+            <div class="card daytwo col-2 row">
+                <ul id="list-toDo" class="list-group">
+                  <li class="">
+                     Date:
+                  </li>
+                  <li>
+                      Temp:
+                  </li>
+                  <li>
+                      Wind:
+                  </li>
+                  <li>
+                      Humidity:
+                  </li>
+                </ul>
+            </div>
+            <div class="card daythree col-2 row">
+                <ul id="list-toDo" class="list-group">
+                  <li class="">
+                     Date:
+                  </li>
+                  <li>
+                      Temp:
+                  </li>
+                  <li>
+                      Wind:
+                  </li>
+                  <li>
+                      Humidity:
+                  </li>
+                </ul>
+            </div>
+            <div class="card dayfour col-2 row">
+                <ul id="list-toDo" class="list-group">
+                  <li class="">
+                     Date:
+                  </li>
+                  <li>
+                      Temp:
+                  </li>
+                  <li>
+                      Wind:
+                  </li>
+                  <li>
+                      Humidity:
+                  </li>
+                </ul>
+            </div>
+            <div class="card dayfive col-2 row">
+                <ul id="list-toDo" class="list-group">
+                  <li class="">
+                     Date:
+                  </li>
+                  <li>
+                      Temp:
+                  </li>
+                  <li>
+                      Wind:
+                  </li>
+                  <li>
+                      Humidity:
+                  </li>
+                </ul>
+            </div>
+              
+
+        </div>
+    </main>
+    <script href="./assets/script.js"></script>
+</body>
+</html>
