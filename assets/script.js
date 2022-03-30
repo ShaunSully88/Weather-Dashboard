@@ -2,15 +2,22 @@ var cityInput = document.querySelector("#citysearch");
 var cityContainerEl= document.querySelector("#main-container");
 var citySearchTerm = document.querySelector("#city-weather");
 var cityFormEl = document.querySelector("#city-form");
+var searchButton = document.getElementById("search-btn")
 var apiKey = "42e1f1d2c64b89323a4af79fe114ff93";
-
-
+var cityName = response.name;
+var latitude = response.coord.lat;
+var longitude = repsonse.coord.lon;
+var today = new Date();
+var date = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
+var forecast = response.weather[0].description;
+var weatherToday = document.querySelector("#weather-today");
+var weatherTodayCard = document.querySelector("#weather-today-card");
 
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
     var city = cityInput.value.trim();
-
+    console.log(city)
     if(city) {
         getWeather(city);
         cityContainerEl.textContent = "";
@@ -23,13 +30,13 @@ var formSubmitHandler = function (event) {
 };
 
 
-var getWeather = function (user) {
-    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=45.14&lon=76.14&exclude=hourly,minutely,alerts&appid=42e1f1d2c64b89323a4af79fe114ff93";
+var getWeather = function (cityInput) {
+    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?" + cityInput + "&exclude=hourly,minutely,alerts&appid=42e1f1d2c64b89323a4af79fe114ff93";
 
     fetch(apiUrl).then(function(response) {
         if(response.ok) {
         response.json().then(function(data) {
-            showWeather(data, user);        
+                    
         });
        } else {
         alert("Error! " + response.statusText);
@@ -39,6 +46,9 @@ var getWeather = function (user) {
         alert("Unable to reach website");
     });
     console.log(fetch)
+
+    weatherToday.textContent = "";
+
 };
 
 
@@ -78,7 +88,6 @@ var showWeather = function(cities, searchTerm) {
     }
 };
 
-getWeather();
+
 console.log(getWeather)
-cityFormEl.addEventListener("submit", formSubmitHandler);
-// "https://api.openweathermap.org/data/2.5/onecall?lat=${}&lon=${}&exclude=hourly,minutely,alerts&appid=42e1f1d2c64b89323a4af79fe114ff93&units=metric&current.temp=${}&current.humidity=${}&current.wind.speed=${}"
+searchButton.addEventListener("click", formSubmitHandler);
