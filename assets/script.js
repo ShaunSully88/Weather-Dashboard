@@ -58,13 +58,13 @@ var getWeather = function (cityInput) {
     // API response for city input
     return fetch ("https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&units=metric&exclude=hourly,minutely,alerts&appid=42e1f1d2c64b89323a4af79fe114ff93")
     })
-    console.log(fetch)
-    // .then(function (response) {
-    //     return response.json();
-    // })
-    // .then(function (response) {
-    //     showWeather(response);
-    // });
+    
+    //  .then(function (response) {
+    //      return response.json();
+    //  })
+    //  .then(function (response) {
+    //      showWeather(response);
+    //  });
 
 };
 
@@ -75,34 +75,56 @@ var getWeather = function (cityInput) {
         return;
     }
     
-     
+    // temperature info pulled from OpenWeather
+    var temperature = document.createElement("p");
+    temperature.id = "temperature";
+    temperature.innerHTML = "Temperature:" + weather.current.temp;
+    weatherToday.appendChild(temperature);
+    console.log(temperature);
+    //Humidex info pulled from OpenWeather
+    var humidex = document.createElement("p");
+    humidex.id = "humidex";
+    humidex.innerHTML = "Humidex:" + weather.current.humidity;
+    weatherToday.appendChild(humidex);
 
-     for (var i = 0; i < cities.length; i++) {
-         //var cityName = repos[i].owner.login + "/" + repos[i].name;
+    // UV info pulled from OpenWeather
+    var UV = document.createElement("p");
+    UV.id = "UV";
+    UV.innerHTML = "UV" + weather.current.uvi;
+    weatherToday.appendChild(UV);
 
-         var cityEl = document.createElement("a");
-         cityEl.classList = "list-item flex-row justify-space-between align-center";
-         cityEl.setAttribute = ("href", " " + "");
+    // Wind Speed info pulled from OpenWeather
+    var windspeed = document.createElement("p");
+    windspeed.id = "windspeed";
+    windspeed.innerHTML = "windspeed" + weather.current.windspeed;
+    weatherToday.appendChild(windspeed);
+ }
+    //  for (var i = 0; i < cities.length; i++) {
+    //      //var cityName = repos[i].owner.login + "/" + repos[i].name;
 
-         var titleEl = document.createElement("span");
-         titleEl.textContent =  ""  ;
+    //      var cityEl = document.createElement("a");
+    //      cityEl.classList = "list-item flex-row justify-space-between align-center";
+    //      cityEl.setAttribute = ("href", " " + "");
 
-         cityEl.appendChild(titleEl);
+    //      var titleEl = document.createElement("span");
+    //      titleEl.textContent =  ""  ;
 
-         var statusEl = document.createElement("span");
-         statusEl.classList ="flex-row align-center";
+    //      cityEl.appendChild(titleEl);
 
-         if(cities[i].open_issues_count > 0) {
-             statusEl.innerHTML = 
-             "<i class='fas fa-times status-icon icon-danger'></i>" + cities[i].open_issues_count + "issue(s)";
-         } else {
-             statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
-         }
+    //      var statusEl = document.createElement("span");
+    //      statusEl.classList ="flex-row align-center";
 
-         cityEl.appendChild(statusEl);
+    //      if(cities[i].open_issues_count > 0) {
+    //          statusEl.innerHTML = 
+    //          "<i class='fas fa-times status-icon icon-danger'></i>" + cities[i].open_issues_count + "issue(s)";
+    //      } else {
+    //          statusEl.innerHTML = "<i class='fas fa-check-square status-icon icon-success'></i>";
+    //      }
 
-         cityContainerEl.appendChild(cityEl);
-     }
+    //      cityEl.appendChild(statusEl);
+
+    //      cityContainerEl.appendChild(cityEl);
+    //  }
 //};
 
 
