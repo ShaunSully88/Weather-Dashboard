@@ -4,7 +4,7 @@ var citySearchTerm = document.querySelector("#city-weather");
 var cityFormEl = document.querySelector("#city-form");
 var searchButton = document.getElementById("search-btn")
 var weatherResults = document.getElementById("weather-results")
-var fiveDay = document.getElementById("five-day-card")
+var fiveDay = document.getElementById("five-day-forecast")
 var weatherToday = document.querySelector("#weather-today");
 var weatherTodayCard = document.querySelector("#weather-today-card");
 var today = new Date();
@@ -81,26 +81,26 @@ var getWeather = function (cityInput) {
     
     // temperature info pulled from OpenWeather
     var temperature = document.createElement("p"); 
-    temperature.innerHTML = "Temperature:" + data.current.temp;
+    temperature.innerHTML = "Temperature: " + data.current.temp;
     cityContainerEl.appendChild(temperature);
     console.log(temperature)
     
     //Humidex info pulled from OpenWeather
     var humidex = document.createElement("p"); 
     humidex.id = "humidex";
-    humidex.innerHTML = "Humidex:" + data.current.humidity;
+    humidex.innerHTML = "Humidex: " + data.current.humidity;
     cityContainerEl.appendChild(humidex);
 
     // UV info pulled from OpenWeather
     var UV = document.createElement("p");    
     UV.id = "UV";
-    UV.innerHTML = "UV" + data.current.uvi;
+    UV.innerHTML = "UV: " + data.current.uvi;
     cityContainerEl.appendChild(UV);
 
     // Wind Speed info pulled from OpenWeather
     var windspeed = document.createElement("p");   
     windspeed.id = "windspeed";
-    windspeed.innerHTML = "windspeed" + data.current.wind_speed;
+    windspeed.innerHTML = "Windspeed: " + data.current.wind_speed;
     cityContainerEl.appendChild(windspeed);
 //  }
     //  for (var i = 0; i < cities.length; i++) {
