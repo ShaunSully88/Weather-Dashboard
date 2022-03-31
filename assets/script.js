@@ -31,17 +31,19 @@ var formSubmitHandler = function (event) {
 //API Call for weather info city input
 var getWeather = function (cityInput) {
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityInput + "&units=metric&exclude=hourly,minutely,alerts&appid=42e1f1d2c64b89323a4af79fe114ff93";
-    console.log(apiUrl)
+    
     fetch(apiUrl).then(function(cityResponse) {
         return cityResponse.json();
     })
     .then(function(cityResponse) {
-
+        console.log(cityResponse)
 
     // Info for Today's Weather Container
     var cityName = cityResponse.name;
     var latitude = cityResponse.coord.lat;
+    console.log(latitude)
     var longitude = cityResponse.coord.lon;
+    console.log(longitude)
     var forecastIcon = cityResponse.weather[0].icon;
     var forecastIconLink = "<img src= 'https://openweathermap.org/img/wn/" + forecastIcon + "@2x.png' alt='" + forecast + "' title = '" + forecast + "' />"
     var forecast = cityResponse.weather[0].description;
@@ -59,46 +61,48 @@ var getWeather = function (cityInput) {
     return fetch ("https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&units=metric&exclude=hourly,minutely,alerts&appid=42e1f1d2c64b89323a4af79fe114ff93")
     })
     
-    //  .then(function (response) {
-    //      return response.json();
-    //  })
-    //  .then(function (response) {
-    //      showWeather(response);
-    //  });
+    .then(function (response) {
+          return response.json();
+      })
+      .then(function (data) {
+          console.log(data)
+          showWeather(data);
+      });
 
 };
 
 
- var showWeather = function(weather) {
-     if(weather.length === 0) {
-        cityContainerEl.textContent = "No forecast data found for input city.";
+ var showWeather = function(data) {
+    
+     if(data.length === 0) {
+        weatherTodayCard.textContent = "No forecast data found for input city.";
         return;
     }
     
     // temperature info pulled from OpenWeather
-    var temperature = document.createElement("p");
-    temperature.id = "temperature";
-    temperature.innerHTML = "Temperature:" + weather.current.temp;
-    weatherToday.appendChild(temperature);
-    console.log(temperature);
+    var temperature = document.createElement("p"); 
+    temperature.innerHTML = "Temperature:" + data.current.temp;
+    cityContainerEl.appendChild(temperature);
+    console.log(temperature)
+    
     //Humidex info pulled from OpenWeather
-    var humidex = document.createElement("p");
+    var humidex = document.createElement("p"); 
     humidex.id = "humidex";
-    humidex.innerHTML = "Humidex:" + weather.current.humidity;
-    weatherToday.appendChild(humidex);
+    humidex.innerHTML = "Humidex:" + data.current.humidity;
+    cityContainerEl.appendChild(humidex);
 
     // UV info pulled from OpenWeather
-    var UV = document.createElement("p");
+    var UV = document.createElement("p");    
     UV.id = "UV";
-    UV.innerHTML = "UV" + weather.current.uvi;
-    weatherToday.appendChild(UV);
+    UV.innerHTML = "UV" + data.current.uvi;
+    cityContainerEl.appendChild(UV);
 
     // Wind Speed info pulled from OpenWeather
-    var windspeed = document.createElement("p");
+    var windspeed = document.createElement("p");   
     windspeed.id = "windspeed";
-    windspeed.innerHTML = "windspeed" + weather.current.windspeed;
-    weatherToday.appendChild(windspeed);
- }
+    windspeed.innerHTML = "windspeed" + data.current.wind_speed;
+    cityContainerEl.appendChild(windspeed);
+//  }
     //  for (var i = 0; i < cities.length; i++) {
     //      //var cityName = repos[i].owner.login + "/" + repos[i].name;
 
@@ -127,6 +131,5 @@ var getWeather = function (cityInput) {
     //  }
 //};
 
-
-console.log(getWeather)
+ }
 searchButton.addEventListener("click", formSubmitHandler);

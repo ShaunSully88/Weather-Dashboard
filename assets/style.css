@@ -24,16 +24,6 @@ header {
     padding: 0 20px;
 }
 
-ul {
-    list-style: none;
-    background: darkgrey;
-   
-}
-
-ul li {
-    background:darkgrey;
-}
-
 .card {
     display: flex;
     background: darkgrey;
