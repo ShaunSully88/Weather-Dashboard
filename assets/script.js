@@ -19,7 +19,7 @@ var formSubmitHandler = function (event) {
     console.log(city)
     if(city) {
         getWeather(city);
-        cityContainerEl.textContent = "";
+    
         cityInput.value = "";
         
     } else {
