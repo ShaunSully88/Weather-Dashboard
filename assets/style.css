@@ -12,7 +12,7 @@ header {
     margin-top: 5px;
     color: white;
     background:#3f87a6;
-    position: relative;
+    
     left:30px;
     border-bottom: 2px solid black;
 }
@@ -27,9 +27,11 @@ header {
 .card {
     display: flex;
     background: darkgrey;
-    margin-right: 5px;
 }
 
+.card-header {
+    display:inline-flex
+}
 .five-day {
     position: relative;
     top:250px;

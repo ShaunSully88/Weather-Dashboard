@@ -51,11 +51,12 @@ var getWeather = function (cityInput) {
     console.log(date)
     
 
-    //weatherToday.textContent = "";
-    //fiveDay.textContent = "";
+    
 
     //Displaying weather results with an image from website
-    weatherResults.innerHTML = cityName + " (" + date + ") " + forecastIconLink;    
+    weatherResults.innerHTML = cityName + " (" + date + ") " + forecastIconLink;
+    
+    console.log(weatherResults.innerHTML)    
 
     // API response for city input
     return fetch ("https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&units=metric&exclude=hourly,minutely,alerts&appid=42e1f1d2c64b89323a4af79fe114ff93")
@@ -87,19 +88,16 @@ var getWeather = function (cityInput) {
     
     //Humidex info pulled from OpenWeather
     var humidex = document.createElement("p"); 
-    humidex.id = "humidex";
     humidex.innerHTML = "Humidex: " + data.current.humidity;
     cityContainerEl.appendChild(humidex);
 
     // UV info pulled from OpenWeather
-    var UV = document.createElement("p");    
-    UV.id = "UV";
+    var UV = document.createElement("p");     
     UV.innerHTML = "UV: " + data.current.uvi;
     cityContainerEl.appendChild(UV);
 
     // Wind Speed info pulled from OpenWeather
     var windspeed = document.createElement("p");   
-    windspeed.id = "windspeed";
     windspeed.innerHTML = "Windspeed: " + data.current.wind_speed;
     cityContainerEl.appendChild(windspeed);
 //  }
