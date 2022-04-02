@@ -4,7 +4,8 @@ var citySearchTerm = document.querySelector("#city-weather");
 var cityFormEl = document.querySelector("#city-form");
 var searchButton = document.getElementById("search-btn")
 var weatherResults = document.getElementById("weather-results")
-var fiveDay = document.querySelector("#five-day-forecast")
+var fiveDay = document.getElementById("five-day-forecast")
+var fiveBody = document.querySelector("five-body")
 var weatherToday = document.querySelector("#weather-today");
 var weatherTodayCard = document.querySelector("#weather-today-card");
 var today = new Date();
@@ -106,9 +107,9 @@ var getWeather = function (cityInput) {
 
      for (var i = 0; i < fiveDayForecast.length; i++) {
         var date = (today.getMonth() + 1) + "/" + (today.getDate() + i +1) + "/" + today.getFullYear();
-        var forecastIcon = cityResponse.weather[0].icon;
+        var forecastIcon = fiveDayForecast[i].weather[0].icon;
         var forecastIconLink = "<img src= 'https://openweathermap.org/img/wn/" + forecastIcon + "@2x.png' alt='" + forecast + "' title = '" + forecast + "' />";
-        var forecast = cityResponse.weather[0].description;
+        var forecast = fiveDayForecast[i].weather[0].description;
       
         var day = document.createElement("div");
         day.className = "day";
