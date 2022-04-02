@@ -105,7 +105,7 @@ var getWeather = function (cityInput) {
 
  var fiveDayForecast = data.daily;
 
-     for (var i = 0; i < fiveDayForecast.length; i++) {
+     for (var i = 0; i < fiveDayForecast.length - 3; i++) {
         var date = (today.getMonth() + 1) + "/" + (today.getDate() + i +1) + "/" + today.getFullYear();
         var forecastIcon = fiveDayForecast[i].weather[0].icon;
         var forecastIconLink = "<img src= 'https://openweathermap.org/img/wn/" + forecastIcon + "@2x.png' alt='" + forecast + "' title = '" + forecast + "' />";
