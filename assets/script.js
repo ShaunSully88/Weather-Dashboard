@@ -9,6 +9,9 @@ var fiveBody = document.querySelector("five-body")
 var weatherToday = document.querySelector("#weather-today");
 var weatherTodayCard = document.querySelector("#weather-today-card");
 var today = new Date();
+var searchHistory = [];
+var searchHistoryCard = document.querySelector("#searchHistory")
+var cityButtonEl = document.querySelector("#city-btn")
 
 
 
@@ -19,6 +22,13 @@ var formSubmitHandler = function (event) {
     var city = cityInput.value.trim();
     console.log(city)
     if(city) {
+        searchHistory.push(city);
+        localStorage.setItem("Forecast Search", JSON.stringify(searchHistory));
+        var searchHistoryEl = document.createElement('button');
+        searchHistoryEl.className = "btn";
+        searchHistoryEl.innerHTML = city;
+        cityButtonEl.appendChild(searchHistoryEl)
+        
         getWeather(city);
     
         cityInput.value = "";
@@ -112,8 +122,8 @@ var getWeather = function (cityInput) {
         var forecast = fiveDayForecast[i].weather[0].description;
       
         var day = document.createElement("div");
-        day.className = "day";
-        day.innerHTML = "<p>" + date + "</p>" +
+        day.className = "col-2 text-align-center";
+        day.innerHTML = "<p><strong>" + date + "</strong></p>" +
         "<p>" + forecastIconLink + "</p>" + 
         "<p>Temp: " + fiveDayForecast[i].temp.day + " C°</p>" + 
         "<p>Humidity: " + fiveDayForecast[i].humidity + "%</p>"
