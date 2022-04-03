@@ -1,0 +1,51 @@
+header {
+    text-align: center;
+    font-size: 36pt;
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    font-weight: bold;
+}
+
+.btn {
+    font-size: 16pt;
+    border-radius: 5px;
+    padding: 0 60px;
+    margin-top: 5px;
+    color: white;
+    background:#3f87a6;
+    
+    left:30px;
+    border-bottom: 2px solid black;
+}
+
+.search-bar {
+    font-size: 16pt;
+    margin-left:5px;
+    margin-bottom: 5px;
+    padding: 0 20px;
+}
+
+.card {
+    display: flex;
+    
+}
+
+ #five-day-forecast {
+    /*text-align: center;*/
+    margin: 0 auto;
+} 
+
+.text-align-center {
+    text-align: center;
+}
+
+.favourable {
+    color: green;
+}
+
+.moderate {
+    color: orange;
+}
+
+.severe {
+    color: red;
+}
