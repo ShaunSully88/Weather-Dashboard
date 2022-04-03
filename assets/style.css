@@ -26,7 +26,7 @@ header {
 
 .card {
     display: flex;
-    background: darkgrey;
+    
 }
 
  #five-day-forecast {
@@ -38,18 +38,14 @@ header {
     text-align: center;
 }
 
-/* .card-header {
-    display:inline-flex
-} */
-
-/* .five-day {
-    position: relative;
-    top:250px;
-    left: 250px;
+.favourable {
+    color: green;
 }
 
-.five-day h3 {
-    position:relative;
-    bottom: 50px;
-    left: 200px; */
-/*
+.moderate {
+    color: orange;
+}
+
+.severe {
+    color: red;
+}

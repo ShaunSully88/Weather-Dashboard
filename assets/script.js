@@ -11,11 +11,11 @@ var weatherTodayCard = document.querySelector("#weather-today-card");
 var today = new Date();
 var searchHistory = [];
 var searchHistoryCard = document.querySelector("#searchHistory")
-var cityButtonEl = document.querySelector("#city-btn")
+var cityButton = document.querySelector("#city-btn")
 
 
 
-// Linking value of city input to getWeather function
+// Linking value of city input to getWeather function and Search History container
 var formSubmitHandler = function (event) {
     event.preventDefault();
 
@@ -23,11 +23,12 @@ var formSubmitHandler = function (event) {
     console.log(city)
     if(city) {
         searchHistory.push(city);
-        localStorage.setItem("Forecast Search", JSON.stringify(searchHistory));
+        localStorage.setItem("ForecastSearch", JSON.stringify(searchHistory));
         var searchHistoryEl = document.createElement('button');
         searchHistoryEl.className = "btn";
+        searchHistoryEl.setAttribute("cityData", city)
         searchHistoryEl.innerHTML = city;
-        cityButtonEl.appendChild(searchHistoryEl)
+        cityButton.appendChild(searchHistoryEl)
         
         getWeather(city);
     
@@ -38,6 +39,7 @@ var formSubmitHandler = function (event) {
     }
     
 };
+
 
 //API Call for weather info city input
 var getWeather = function (cityInput) {
@@ -83,7 +85,7 @@ var getWeather = function (cityInput) {
 
 };
 
-
+// Using DOM's to get weather data displayed on screen
  var showWeather = function(data) {
     
      if(data.length === 0) {
@@ -105,6 +107,19 @@ var getWeather = function (cityInput) {
     // UV info pulled from OpenWeather
     var UV = document.createElement("p");     
     UV.innerHTML = "UV: " + data.current.uvi;
+    
+    if (UV >= 0) {
+        UV.classList.add =("favourable");
+    };
+
+    if (UV >= 3) {
+        UV.classList.add =("moderate");
+    }
+
+    if (UV >= 8) {
+        UV.classList.add =("severe");
+    }
+
     cityContainerEl.appendChild(UV);
 
     // Wind Speed info pulled from OpenWeather
@@ -113,6 +128,8 @@ var getWeather = function (cityInput) {
     cityContainerEl.appendChild(windspeed);
 //  }
 
+
+// using API Response to displayed 5 day forecast from today's date
  var fiveDayForecast = data.daily;
 
      for (var i = 0; i < fiveDayForecast.length - 3; i++) {
@@ -131,4 +148,31 @@ var getWeather = function (cityInput) {
         fiveDay.appendChild(day);
     }
 }    
+
+// Loading saved Data for city search
+var cityLoad = function() {
+    searchHistory = JSON.parse(localStorage.getItem("forecastSearch"));
+    if (searchHistory) {
+        searchHistory = JSON.parse(localStorage.getItem("forecastSearch"));
+        for (var i = 0; i <searchHistory.length; i++) {
+            var searchHistoryEl = document.createElement("button");
+            searchHistoryEl.className = "btn";
+            searchHistoryEl.setAttribute("cityData", searchHistory[i]);
+            searchHistoryEl.innerHTML = searchArray[i];
+            cityButton.appendChild(searchHistoryEl);
+
+        }
+    }
+}
+
+// seperate Handler for all cities in Search history
+var historyHandler = function (event) {
+    var city = event.target.getAttribute("cityData");
+    if (city) {
+        getWeather(city);
+    }
+}
+
+
 searchButton.addEventListener("click", formSubmitHandler);
+cityButton.addEventListener("click", historyHandler );
